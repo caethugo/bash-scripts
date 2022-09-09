@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#Exporting metadata
+
+exiftool -r -common -ext .JPG -ext .jpeg ./ > Desktop/folder/metest.txt 
+
+#Moving files in new directory then renaming them YYYY_MM_DD_HH_MM_n
+#It was done in many steps because I was quite struggling on having a good regex
+
+mkdir ~/Desktop/photoland #no error if exists
+mv ./*.JPG ./*.JPEG ~/Desktop/photoland #no error if none
+
+for filename in ~/Desktop/photoland/*
+do
+  filedate=$(exiftool -T -DateTimeOriginal "$filename")
+  inter_s=${filedate// /$'_'}
+  string=${inter_s//:/$'_'}
+  final_name=${string:0:16} 
+  mv  "$filename" ~/Desktop/photoland/$final_name.JPG
+done 
