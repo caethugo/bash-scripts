@@ -1,6 +1,6 @@
 Explanation about this repo : 
 
-This is a way to store some bash scripts I have to write for my Software Engineering course. 
+This repoo is a simple way to store some bash scripts. 
 
 On September 26th 2022, I added :
 
